@@ -1,7 +1,15 @@
-import express from 'express'
-const app = express()
-app.all('/', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Hello, world from the server!')
-})
-app.listen(process.env.PORT || 3000)
+import express from 'express';
+
+const app = express();
+const port = 3000;
+
+app.listen(
+    process.env.PORT || port,
+    () => console.log(`starting server on port ${port}`)
+);
+
+app.get('/', (req, res) => {
+    res.status(200).send({
+        message: "Hello from the Server!"
+    })
+});
